@@ -31,7 +31,14 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   })
 
   cookies.set('session', sessionCookie, {
-    path: '/'
+    path: '/',
+    domain: undefined,
+    expires: undefined,
+    maxAge: undefined,
+    httpOnly: undefined,
+    sameSite: undefined,
+    secure: undefined,
+    encode: undefined
   })
 
   return redirect('/dashboard')
