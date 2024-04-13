@@ -1,0 +1,129 @@
+---
+/*BIBLOTECAS*/
+import { Image } from 'astro:assets'; //Astro usa un componente integrado para imaganes
+import 'bootstrap/dist/css/bootstrap.css'
+
+/*LAYOUTS*/
+import Layout from '../layouts/Layout.astro';
+
+/*COMPONENTES*/
+import Header from '../components/Header.astro'
+import Card from '../components/Card.jsx';
+import Carrusel from '../components/Carrusel.jsx';
+import Heart3D from '../components/Heart3D.jsx'
+import Footer from '../components/sections/Footer.astro';
+
+/*IMAGENES*/
+---
+<Layout title="CardioCareIA">
+	<Header
+	texto1="Inicio de Sesion"
+	link1="signin"
+
+	texto2="Novedades"
+	link2=""
+
+	texto3="Nuestro Sistema"
+	link3=""
+
+	texto4="Chat"
+	link4="/src/pages/chat.astro"
+	/>
+
+	<Carrusel client:load/>
+
+	<Heart3D client:idle/>
+
+	
+	<section class="sec1">
+	<h1 class="tit1">¿QUIENES SOMOS?</h1>
+	<div class="container">
+  		<div class="row">
+    		<div class="col-md-6">
+    			<img src="doctor.jpg" alt="" width="800px" class="img_doc">
+   	 		</div>
+    		<div class="col-md-6">
+    			<p class="parrafo_sec1">En Cardiocare, estamos dedicados a la salud cardiovascular y al bienestar de las personas. Nuestro equipo de expertos en tecnología trabaja incansablemente para proporcionar una solución innovadora que permita la detección temprana de enfermedades cardiovasculares utilizando la inteligencia artificial. Creemos en un futuro en el que la prevención y el cuidado de la salud sean accesibles para todos. Nuestra misión es brindar a las personas las herramientas necesarias para mantener sus corazones sanos y vivir vidas más largas y saludables.</p>
+
+    		</div>
+  		</div>
+	</div>
+
+
+<section class="sec2">
+  	<h1 class="tit2">NUESTROS SERVICIOS</h>
+  	<div class="container">
+
+	<Card
+    titulo="Inteligencia Artificial Integrada"
+    info="Descubre a CARE, nuestra inteligencia artificial especializada en la detección temprana de síntomas anómalos y en proporcionarte recomendaciones específicas para abordar tus preocupaciones de salud."
+	client:visible
+	/>
+	<Card
+	titulo="Monitorizacion continua"
+	info="La monitorización continua es la piedra angular de nuestra plataforma, proporcionándote una visión constante y precisa de tu salud cardiovascular. Nuestra avanzada tecnología conectados a tu usuario te permiten rastrear y evaluar tus datos vitales en tiempo real. Esto garantiza que estés siempre informado y al tanto de cualquier cambio en tu salud cardiovascular, permitiéndote tomar medidas preventivas de manera oportuna"
+	client:visible
+
+	/>
+	<Card
+	titulo="Evaluacion de Sintomas en Tiempo real"
+	info="Nuestra plataforma te brinda la capacidad de evaluar tus síntomas en tiempo real. Con solo unos pocos clics, podrás ingresar tus síntomas y recibir evaluaciones instantáneas respaldadas por inteligencia artificial. Esto te proporciona la tranquilidad de comprender lo que está ocurriendo en tu cuerpo en el momento, y te guía en la toma de decisiones informadas sobre tu salud cardiovascular"
+	client:visible
+	/>
+	<Card
+	titulo="Asesoramiento con los mejores medicos de tu clinica"
+	info="Nuestro servicio de asesoramiento conecta directamente a los usuarios con los mejores médicos de su clínica. Obtén acceso a la experiencia de profesionales de la salud especializados en cardiología, quienes te brindarán orientación personalizada y respuestas a tus preguntas. Esta conexión instantánea con expertos médicos te permite tomar decisiones informadas sobre tu salud cardiovascular y recibir atención de calidad"
+	client:visible
+	/>
+	</div>
+	<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+	<Footer/>
+</Layout>
+<!--ESTILOS SECCION 1-->
+<style>
+	/* Estilo para la primera sección */
+.sec1 
+{
+    padding: 100px; 
+    margin-bottom: 20px; 
+	background-color: var(--background-color);
+	transition: background-color 0.8s ease;
+
+}
+
+/* Estilo para los elementos dentro de la primera sección */
+.sec1 .container {
+    position: relative;
+    left: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sec1 .img_doc {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 20px; 
+}
+
+.sec1 .parrafo_sec1 {
+    text-align: center;
+    padding-top: 80px; 
+}
+
+.tit1 {
+    position: relative;
+    font-size: 34px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding: 10px;
+    max-width: 100%;
+}
+
+</style>
+
+<!--ESTILOS SECCION 2-->
+<style>
+
+</style>
