@@ -39,7 +39,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   try {
     const userRecord = await auth.createUser({
       email,
-      password: hashedPassword,
+      // eslint-disable-next-line object-shorthand
+      password: password,
       displayName: name
     })
 
