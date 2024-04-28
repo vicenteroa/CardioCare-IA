@@ -1,43 +1,20 @@
 ![CARDIOCARE-DEV](https://github.com/vicenteroa/CardioCare-IA/assets/79950811/055e09e6-e3a2-49c7-9f52-16e583721e9c)
 
-# Cardio Care IA 
-Bienvenido a la pagina oficial de CardioCare IA para la asignatura de ingeneria en software II
+# Descripción
+Esta es la rama de desarrollo (DEV) del proyecto. Aquí es donde se trabaja en nuevas características, correcciones de errores y otras mejoras antes de fusionarlas en la rama principal del proyecto.
 
-### PASO DE INSTALACION
-Clona el repositorio localmente en tu PC | Notebook
+# Instrucciones 
+# Actualiza tu repositorio local con los cambios remotos en todas las ramas
+
 ```sh
-git clone https://github.com/vicenteroa/CardioCare-IA.git 
+git fetch
 ```
-Una vez clonado procede a instalar las dependencias 
+# Cambia a la rama DEV
 ```sh
-npm install 
+git switch DEV
 ```
 
-## 🚀 Estructura del proyecto
 
-Esta es la estructura oficial de astro ! pero contiene modificaciones 
-
-```text
-/
-├── public/
-│ 
-├── src/
-│   ├── components/
-│   │   └── Card.jsx
-            Header.astro
-            Carrusel.jsx
-            Heart3D.jsx
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-            dashboard.astro
-            panel.astro
-            register.astro
-            signin.astro
-            user.astro
-└── package.json
-```
 
 
 
@@ -85,4 +62,3 @@ Todos los comandos de la terminal que se pueden ejecutar en el entorno de astro:
     </td>
   </tr>
 </table>
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build)
