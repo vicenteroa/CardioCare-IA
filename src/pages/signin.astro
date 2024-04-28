@@ -26,6 +26,7 @@ if (Astro.cookies.has("session")) {
     texto4="Chat"
     link4="/src/pages/chat.astro"
   />
+  <div class="cont-form">
   <h1>Iniciar sesión</h1>
   <p class="registration-text">
     ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a></p>
@@ -36,6 +37,7 @@ if (Astro.cookies.has("session")) {
     <input type="password" name="password" id="password" />
     <button type="submit">Iniciar sesión</button>
   </form>
+  </div>
 </Layout>
 <script>
   import {
@@ -78,6 +80,11 @@ if (Astro.cookies.has("session")) {
   });
 </script>
 <style>
+
+  .cont-form{
+    background-color:var(--background-color);
+    transition: background-color 0.8s ease;
+  }
   form {
     max-width: 400px;
     margin: 0 auto;
@@ -91,6 +98,7 @@ if (Astro.cookies.has("session")) {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    color: var(--background-color-chat-dark);
   }
 
   input {
@@ -99,6 +107,7 @@ if (Astro.cookies.has("session")) {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    color:var(--background-color-chat-dark);
   }
 
   button {
