@@ -1,54 +1,71 @@
 ---
 import logo from "../../public/logo.png"
+import Layout from "../layouts/Layout.astro"
 ---
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            background-color: #28A7DC;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-			font-size: 19px;
-        }
-        body.dark {
-  	    background-color: #191A1B;
-  	    color: #fff;
-	    }
-        .error-container {
-            text-align: center;
-            color: white;
-            border: 40px solid white;
-            padding: 10px;
-            display: flex;
-			width: 1200px;
-            align-items: center;
-			text-align: justify;
-        }
-        .error-container h1 {
-            font-size: 65px;
-            margin: 10px;
-			padding: 10px;
-			text-align: center;
-        }
-		.error-icon {
-            margin-right: 20px;
-        }
-
-    </style>
-</head>
-<body>
+<Layout title="404">
     <div class="error-container">
         <img class="error-icon" src="/public/logo.png" alt="Logo">
         <div>
-            <h1>ERROR 404</h1>
+            <h1><strong>ERROR 404</strong></h1>
             <p>Lo sentimos, la pagina que estas buscando no se encuentra. Puede que haya sido eliminada o que la direccion este incorrecta.</p>
         </div>
     </div>
 </body>
-</html>
+</Layout>
 
+<script is:inline>
+    document.addEventListener("DOMContentLoaded", function() {
+    const theme = localStorage.getItem('theme');
+    if (theme) 
+    {
+        document.body.className = theme;
+    }
+    });
+</script>
+
+<style>
+body {
+    background-color: var(--background-color-light); /* Color de fondo para modo claro */
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 19px;
+}
+html.dark{
+    background-color: #191A1B;
+    color: #fff 
+}
+body.dark {
+    background-color: #191A1B;
+    color: #fff;
+}
+
+.error-container {
+    text-align: center;
+    color: white;
+    border: 40px solid white;
+    padding: 10px;
+    display: flex;
+    width: 1200px;
+    align-items: center;
+    text-align: justify;
+}
+h1{
+    position: relative;
+    right: 20vh;
+    
+}
+.error-container h1 {
+    font-size: 65px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.error-icon {
+    margin-right: 1vh;
+}
+</style>
