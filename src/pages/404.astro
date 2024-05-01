@@ -1,27 +1,54 @@
 ---
-import Layout from "../layouts/Layout.astro"
-import ThemeIcon from "../components/ThemeIcon.astro"
---- 
-<Layout title="404">
+import logo from "../../public/logo.png"
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: #28A7DC;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+			font-size: 19px;
+        }
+        body.dark {
+  	    background-color: #191A1B;
+  	    color: #fff;
+	    }
+        .error-container {
+            text-align: center;
+            color: white;
+            border: 40px solid white;
+            padding: 10px;
+            display: flex;
+			width: 1200px;
+            align-items: center;
+			text-align: justify;
+        }
+        .error-container h1 {
+            font-size: 65px;
+            margin: 10px;
+			padding: 10px;
+			text-align: center;
+        }
+		.error-icon {
+            margin-right: 20px;
+        }
 
-<div>
-<h1>
-    404
-</h1>
-</div>
-</Layout>
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <img class="error-icon" src="/public/logo.png" alt="Logo">
+        <div>
+            <h1>ERROR 404</h1>
+            <p>Lo sentimos, la pagina que estas buscando no se encuentra. Puede que haya sido eliminada o que la direccion este incorrecta.</p>
+        </div>
+    </div>
+</body>
+</html>
 
-<style>
-	body
-	{
-	 --background-color: rgb(255, 255, 255);
-	}
-	body.dark {
-  	--background-color: #333333;
-  	color: #fff;
-	}
-
-</style>
-
-<ThemeIcon
->
