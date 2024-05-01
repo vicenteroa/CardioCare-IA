@@ -28,8 +28,8 @@ if (Astro.cookies.has("session")) {
     texto4="Chat"
     link4="/src/pages/chat.astro"
   />
+
   <div class="cont-form">
-    <h1><br></br></h1>
   <p class="registration-text">
     ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a></p>
   <form action="/api/auth/signin" method="post">
@@ -89,10 +89,12 @@ if (Astro.cookies.has("session")) {
   });
 </script>
 <style>
-
   .cont-form{
-    background-color:var(--background-color);
+    background-color: var(--background-color);
     transition: background-color 0.8s ease;
+    display:grid;
+    margin-top: 20vh;
+
   }
   form {
     max-width: 400px;
