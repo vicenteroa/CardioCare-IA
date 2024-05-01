@@ -3,7 +3,6 @@ import { getAuth } from 'firebase-admin/auth'
 import { app } from '../../../firebase/server'
 import { getFirestore } from 'firebase-admin/firestore'
 import * as bcrypt from 'bcrypt'
-
 export const POST: APIRoute = async ({ request, redirect }) => {
   const auth = getAuth(app)
   const db = getFirestore(app)

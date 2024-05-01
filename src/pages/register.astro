@@ -4,6 +4,8 @@ import Header from '../components/Header.astro'
 ---
 
 <Layout title="Registro">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <Header
     texto1="Inicio de Sesión"
     link1="register"
@@ -20,7 +22,7 @@ import Header from '../components/Header.astro'
   <p class="registration-text">
     ¿Ya tienes una cuenta? <a href="/signin">Iniciar sesión</a>
   </p>
-  <form action="/api/auth/register" method="post">
+  <form id='register-form'action="/api/auth/register" method="post">
     <label for="name">Nombre</label>
     <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" />
     <label for="Rut">Rut</label>
@@ -42,6 +44,26 @@ import Header from '../components/Header.astro'
   </form>
   </divc>
 </Layout>
+<script type="module">
+  import { showMessage } from "../resources/notification";
+  const form = document.getElementById('register-form');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const response = await fetch('/api/auth/register', {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      showMessage('Registro Exitoso')
+
+    }
+  })
+</script>
 
 <style>
 
