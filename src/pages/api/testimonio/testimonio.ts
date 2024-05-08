@@ -2,6 +2,7 @@ import type { APIRoute } from "astro";
 import { app } from "../../../firebase/server";
 import { getFirestore } from "firebase-admin/firestore";
 import * as bcrypt from 'bcrypt';
+import { format } from 'date-fns-tz'; // Importar la función format de date-fns-tz
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const formData = await request.formData();
@@ -19,8 +20,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   try {
     const db = getFirestore(app);
     const testRef = db.collection("testimonio"); //Vendria a ser parte del testimonio.
-    const currentDate = new Date(); //Se obtiene la fecha y hora actual del servidor
-    const timestamp = currentDate.toISOString();
+    const chileTime = format(new Date(), 'yyyy-MM-dd HH:mm:ss', { timeZone: 'America/Santiago' }); // Obtener la hora actual de Chile en el servidor
     const encryptedText = await bcrypt.hash(testimonioTexto, 10); // Encriptar el texto del testimonio
     await testRef.add({
       name,
@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       pregunta2,
       pregunta3,
       testimonioTexto: encryptedText,
-      timestamp
+      timestamp: chileTime // Utilizar la hora de Chile como marca de tiempo
     });
   } catch (error) {
     return new Response("Algo salió mal", {
