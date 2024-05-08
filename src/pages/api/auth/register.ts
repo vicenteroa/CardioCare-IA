@@ -13,6 +13,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const password = formData.get('password')?.toString()
   const name = formData.get('name')?.toString()
   const Rut = formData.get('Rut')?.toString()
+  const Terminos = formData.get('terms')?.toString()
 
   if (!email || !password || !name || !Rut) {
     return new Response(
@@ -48,7 +49,8 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       name,
       email,
       password: hashedPassword,
-      Rut
+      Rut,
+      Terminos
     })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {

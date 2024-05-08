@@ -4,7 +4,6 @@ import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
 import SideBar from "../components/SideBar.astro";
 
-
 const auth = getAuth(app);
 
 /* Verificar la sesión actual */
@@ -24,10 +23,9 @@ if (!user) {
   <h1>Bienvenido {user.displayName}</h1>
   <p>Nos alegra verte aquí</p>
   <form action="/api/auth/signout">
-    <button type="submit">Cerrar sesión</button>
+    <button type="submit" class="boton-cerrar-sesion">Cerrar sesión</button>
   </form>
   <div class="p-4 sm:ml-64">
-  <h1>hola</h1>
 </div>
   <SideBar
   name={user.displayName}
@@ -35,21 +33,25 @@ if (!user) {
   op2="Opcion 2"
   op3="Opcion 3"
   op4="Opcion 4"
-
   >
-
-
-
-
 </Layout>
 
 <SideBar name={user.displayName} />
 
-<div style="display: flex; flex-direction: column; align-items: center; height: 80vh; background-color: #f9f9f9;">
-  <div style="max-width: 1200px; width: 80%; padding: 16px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 100vh;">
-    <p style="font-size: 18px; margin-bottom: 8px;">Por favor, responde las siguientes preguntas:</p>
-    <div style="font-size: 16px; margin-bottom: 16px;">
-      <p>¿Has experimentado dolor en el pecho o malestar en el área del corazón en las últimas 24 horas?</p>
+<form action="/api/testimonio/testimonio" method="post">
+<div style="display: flex; flex-direction: column; align-items: center; height: 80vh; ">
+  <div style="max-width: 1200px; width: 80%; padding: 16px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 100vh; text-align: justify;">
+    <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; margin-bottom: 18px;">Instrucciones para proporcionar su testimonio médico:</h2>
+    <p style="font-size: 14px; margin-bottom: 8px;">
+      <br><strong>Extensión máxima:</strong> Su testimonio médico no debe exceder los 1000 caracteres. Por favor, sea conciso y enfóquese en los detalles relevantes.<br>
+      <br><strong>Lenguaje apropiado:</strong> Evite el uso de palabras vulgares o inapropiadas. Mantenga un tono profesional y objetivo.<br>
+      <br><strong>Enfoque en lo médico:</strong> Su testimonio debe centrarse exclusivamente en su experiencia médica relacionada con enfermedades cardiovasculares. <br>No incluya información personal no relevante.<br>
+      <br><strong>Aceptación de términos y condiciones:</strong> Al proporcionar su testimonio, acepta los términos y condiciones que se encuentran a continuación.<br>
+      <br>
+    </p>
+    <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; margin-bottom: 17px;">Por favor, responda las siguientes preguntas:</h2>
+    <div style="font-size: 14px; margin-bottom: 14px;">
+      <p><br>¿Has experimentado dolor en el pecho o malestar en el área del corazón en las últimas 24 horas?</p>
       <label>
         <input type="radio" name="chestPain" value="yes"> Sí
       </label>
@@ -57,7 +59,7 @@ if (!user) {
         <input type="radio" name="chestPain" value="no"> No
       </label>
     </div>
-    <div style="font-size: 16px; margin-bottom: 16px;">
+    <div style="font-size: 14px; margin-bottom: 14px;">
       <p>¿Has notado dificultad para respirar o falta de aliento durante actividades cotidianas, como subir escaleras o caminar distancias cortas?</p>
       <label>
         <input type="radio" name="shortnessOfBreath" value="yes"> Sí
@@ -66,7 +68,7 @@ if (!user) {
         <input type="radio" name="shortnessOfBreath" value="no"> No
       </label>
     </div>
-    <div style="font-size: 16px; margin-bottom: 16px;">
+    <div style="font-size: 14px; margin-bottom: 14px;">
       <p>¿Tienes antecedentes familiares de enfermedades cardíacas, como ataques al corazón, hipertensión o accidentes cerebrovasculares?</p>
       <label>
         <input type="radio" name="familyHistory" value="yes"> Sí
@@ -76,15 +78,92 @@ if (!user) {
       </label>
     </div>
     <textarea
-      rows="5"
-      cols="50"
-      maxlength="1000"
-      minlength="200"
-      placeholder="Escribe tu testimonio..."
-      style="resize: none; font-size: 16px; padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); height: 50vh;"
-    ></textarea>
-    <button style="margin-top: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; padding: 8px 16px; font-size: 16px; cursor: pointer;">
-      Enviar
-    </button>
-  </div>
+    rows="5"
+    cols="50"
+    maxlength="1100"
+    minlength="200"
+    placeholder="Escribe tu testimonio..."
+    style="resize: none; font-size: 16px; padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); height: 25vh;"
+    id="testimonio"
+    name="textoTestimonio"
+  ></textarea>
+
+  <input type="hidden" name="nombreDeUsuario" value={user.displayName}>
+  <input type="hidden" name="uid" value={user.uid}>
+
+  <button type="submit"
+    style="margin-top: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; padding: 8px 16px; font-size: 16px; cursor: pointer;"
+    id="enviar"
+  >
+    Enviar
+  </button>
+  </form>
 </div>
+</div>
+
+<script>
+const botonEnviar = document.querySelector('#enviar');
+botonEnviar.addEventListener('click', (event) => {
+  const textarea = document.querySelector('#testimonio');
+  const preguntas = document.querySelectorAll('input[type="radio"]:checked');
+  const respuestasNo = document.querySelectorAll('input[type="radio"][value="no"]:checked');
+
+  // Verificar que se hayan respondido las tres preguntas
+  if (preguntas.length < 3) {
+    alert('Por favor, responda todas las preguntas antes de enviar su testimonio.');
+    event.preventDefault();
+    return;
+  }
+
+  // Verificar si todas las respuestas son "No"
+  if (respuestasNo.length === 3) {
+    alert('No hace falta diagnóstico.');
+    event.preventDefault();
+    return;
+  }
+
+  // Verificar la longitud del testimonio
+  if (textarea instanceof HTMLTextAreaElement) {
+    const longitudTexto = textarea.value.length;
+    if (longitudTexto < 200) {
+      alert('El testimonio es demasiado corto. Por favor, asegúrate de que tenga al menos 200 caracteres.');
+      event.preventDefault();
+    } else if (longitudTexto > 1000) {
+      alert('El testimonio es demasiado largo. Por favor, asegúrate de que no exceda los 1000 caracteres.');
+      event.preventDefault();
+    }
+  } else {
+    console.error('El elemento no es un área de texto.');
+  }
+});
+
+</script>
+
+<style>
+
+html, body {
+  height: 100%; 
+  margin: 0; 
+}
+  body {
+    background-color: #28A7DC;
+    opacity: 0.7;
+    background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #28A7DC 40px), repeating-linear-gradient(#ffffff55, #ffffff);
+    margin: 0;
+  }
+</style>
+<style>
+  .boton-cerrar-sesion {
+    display: block; 
+    margin-left: auto; 
+    margin-right: 20px; 
+    background-color: #007bff; 
+    color: white; 
+    border: none; 
+    border-radius: 4px; 
+    padding: 8px 16px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    text-align: center; 
+  }
+</style>
