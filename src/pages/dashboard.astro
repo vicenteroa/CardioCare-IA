@@ -20,6 +20,9 @@ if (!user) {
 ---
 
 <Layout title="Testimonio">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
   <h1>Bienvenido {user.displayName}</h1>
   <p>Nos alegra verte aquí</p>
   <form action="/api/auth/signout">
@@ -38,7 +41,7 @@ if (!user) {
 
 <SideBar name={user.displayName} />
 
-<form action="/api/testimonio/testimonio" method="post">
+<form action="/api/testimonio/testimonio" method="post" id="formulario">
 <div style="display: flex; flex-direction: column; align-items: center; height: 80vh; ">
   <div style="max-width: 1200px; width: 80%; padding: 16px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 100vh; text-align: justify;">
     <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; margin-bottom: 18px;">Instrucciones para proporcionar su testimonio médico:</h2>
@@ -87,7 +90,7 @@ if (!user) {
     id="testimonio"
     name="textoTestimonio"
   ></textarea>
-
+  <span id="error-message" class="error-message"></span>
   <input type="hidden" name="nombreDeUsuario" value={user.displayName}>
   <input type="hidden" name="uid" value={user.uid}>
 
@@ -100,8 +103,9 @@ if (!user) {
   </form>
 </div>
 </div>
-
 <script>
+
+import { showMessage } from "../resources/notification";
 const botonEnviar = document.querySelector('#enviar');
 botonEnviar.addEventListener('click', (event) => {
   const textarea = document.querySelector('#testimonio');
@@ -110,14 +114,14 @@ botonEnviar.addEventListener('click', (event) => {
 
   // Verificar que se hayan respondido las tres preguntas
   if (preguntas.length < 3) {
-    alert('Por favor, responda todas las preguntas antes de enviar su testimonio.');
+    showMessage('Por favor, responda todas las preguntas antes de enviar su testimonio.','error');
     event.preventDefault();
     return;
   }
 
   // Verificar si todas las respuestas son "No"
   if (respuestasNo.length === 3) {
-    alert('No hace falta diagnóstico.');
+    showMessage('No hace falta diagnóstico.','error');
     event.preventDefault();
     return;
   }
@@ -126,10 +130,10 @@ botonEnviar.addEventListener('click', (event) => {
   if (textarea instanceof HTMLTextAreaElement) {
     const longitudTexto = textarea.value.length;
     if (longitudTexto < 200) {
-      alert('El testimonio es demasiado corto. Por favor, asegúrate de que tenga al menos 200 caracteres.');
+      showMessage('El testimonio es demasiado corto. Por favor, asegúrate de que tenga al menos 200 caracteres.','error');
       event.preventDefault();
     } else if (longitudTexto > 1000) {
-      alert('El testimonio es demasiado largo. Por favor, asegúrate de que no exceda los 1000 caracteres.');
+      showMessage('El testimonio es demasiado largo. Por favor, asegúrate de que no exceda los 1000 caracteres.','error');
       event.preventDefault();
     }
   } else {
@@ -137,7 +141,35 @@ botonEnviar.addEventListener('click', (event) => {
   }
 });
 
+fetch('/words.json')
+  .then(response => response.json())
+  .then(data => {
+    const forbiddenWords = data.data
+    const form = document.getElementById('formulario') as HTMLFormElement
+    const testimonio = document.getElementById('testimonio') as HTMLTextAreaElement
+    const errorMessage = document.getElementById('error-message') as HTMLElement
+    form.addEventListener('submit', function (event) {
+      // Detiene el envío del formulario al principio
+      event.preventDefault()
+      const words = (testimonio.value + ' ').split(/\b/)
+      let hasForbiddenWord = false
+      for (const word of words) {
+        if (forbiddenWords.includes(word)) {
+          // Si se encuentra una palabra prohibida, muestra un mensaje de error
+          errorMessage.textContent = 'Por favor, evita usar lenguaje ofensivo en tu testimonio.'
+          errorMessage.style.color = 'red'
+          hasForbiddenWord = true
+          break
+        }
+      }
+      // Si no se encuentra ninguna palabra prohibida, envía el formulario
+      if (!hasForbiddenWord) {
+        form.submit()
+      }
+    })
+  })
 </script>
+
 
 <style>
 
