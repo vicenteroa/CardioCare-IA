@@ -8,7 +8,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint --ext .ts,.js,.tsx ."
+    "lint": "eslint --ext .ts,.js,.tsx .",
+    "test": "npx cypress run",
+    "test:open": "npx cypress open"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -35,6 +37,7 @@
     "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
+    "cypress": "^13.9.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
