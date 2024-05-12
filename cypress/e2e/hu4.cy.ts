@@ -1,4 +1,14 @@
-describe('Prueba de Inicio de sesión', () => {
+/* Validación de información de usuario en BBDD - HU4 */
+/*
+Descripción:
+✅ Validación de datos de registro de usuario para comprobar si está registrado o no son datos correctos.
+
+➡️ Como objetivo principal garantizar la seguridad, integridad y precisión de la información proporcionada por los usuarios al momento de registrarse en nuestro sistema.
+
+➡️ Esto se logra mediante la verificación de la autenticidad de los datos, como direcciones de correo electrónico válidas y contraseñas seguras, asegurando así que el acceso al sistema sea solo para usuarios autorizados
+*/
+
+describe('HU4:Validación de información de usuario en BBDD', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4321/signin')
   })

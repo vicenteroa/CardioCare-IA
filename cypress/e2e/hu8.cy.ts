@@ -1,4 +1,10 @@
-describe('Testimonio Test 🧑‍⚕️', () => {
+/* Registro de información de testimonios en base de datos – HU8 */
+/*
+Checklist ✅
+➡️ Permitir que usuarios compartan sus testimonios en la plataforma y se almacenen correctamente en la BBDD
+➡️ Integrar técnicas de encriptación para proteger la confidencialidad de los testimonios de los usuarios.
+*/
+describe('HU8: Registro de información de testimonios en base de datos', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4321')
     cy.get('[href="signin"]').click()
@@ -12,19 +18,7 @@ describe('Testimonio Test 🧑‍⚕️', () => {
     cy.log('Inicio de sesión exitoso ✅')
     cy.pause()
   })
-  /* Test 2: Verificación de preguntas no respondidas */
-
-  /* Test 3: Verificación de testimonio sin preguntas respondidas */
-
-  /* Test 4: Verificación de minimo caracter */
-
-  /* Test 5: Verificación de maximo caracter */
-
-  /* Test 6: Verificación de testimonio valido */
-
-  /* Test 7: Verificación de testimonio con garabatos */
-
-  /* Test 8: Verificación de boton enviar sin respuestas */
+  /* OTROS TEST :  */
 })
 
 function signinAuth (email:string, password:string):void {
