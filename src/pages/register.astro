@@ -47,6 +47,25 @@ import Header from '../components/Header.astro'
     <button type="submit" id="buttonSub">Registrarse</button>
   </form>
   </div>
+  <script>
+    import { showMessage } from "../resources/notification";
+    document.getElementById('register-form').addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form)
+    const response = await fetch('/api/auth/register', { method: 'POST', body: formData })
+    const data = await response.json()
+
+    showMessage(data.message, data.status === 200 ? 'success' : 'error')
+
+    if (data.status === 200) {
+    setTimeout(()=>{
+    window.location.href = '/signin'
+    },2000)
+    }
+})
+  </script>
 </Layout>
 <script src="./scripts/checkbox.js"></script>
 <style>
