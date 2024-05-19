@@ -31,6 +31,9 @@ if (Astro.cookies.has("session")) {
 
   <div class="cont-form">
   <p class="registration-text">
+    <br>
+    <br>
+    <br>
     ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a></p>
   <form action="/api/auth/signin" method="post">
     <label for="email" for="email">Email</label>
@@ -88,6 +91,18 @@ if (Astro.cookies.has("session")) {
   }
   });
 </script>
+<style>
+  .contenedor {
+        display: flex;
+        justify-content: right;
+        max-width: 25%;
+        max-height: 30%;
+        margin-top: -128px;
+  }
+</style>
+<div class="contenedor">
+  <img src="doctor_inicio.png">
+<style>
 <style>
   .cont-form{
     background-color: var(--background-color);

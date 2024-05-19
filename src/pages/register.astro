@@ -31,11 +31,11 @@ import Header from '../components/Header.astro'
       name="Rut"
       id="Rut"
       placeholder="Ingresa tu Rut sin puntos y con guión"
-      pattern="^0*(\\d{1,3}(\\.?\\d{3})*)-([\\dkK])$"
-      title="Ingresa un Rut válido (por ejemplo, 12345678-K)"
+      pattern="^\\d{7,8}-[\\dkK]$"
+      title="Ingresa un Rut válido (por ejemplo, 12345678-K o 1234567-K)"
       required
       maxlength="10"
-    />
+    />    
     <label for="email">Correo electrónico</label>
     <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" />
     <label for="password">Contraseña</label>
@@ -69,7 +69,16 @@ import Header from '../components/Header.astro'
 </Layout>
 <script src="./scripts/checkbox.js"></script>
 <style>
-
+  .contenedor {
+        display: flex;
+        justify-content: right;
+        margin-top: -275px; /* Ajusta la distancia vertical */
+ 
+  }
+</style>
+<div class="contenedor">
+  <img src="doctor_registro.png">
+<style>
   .cont-form
   {
     background-color:var(--background-color);
@@ -136,4 +145,10 @@ input[type="checkbox"] {
     font-size: 18px;
     font-weight: bold;
   }
-</style>
+
+  <style>
+    .contenedor {
+        display: flex;
+        justify-content: end;
+    }
+
