@@ -3,7 +3,7 @@ import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
 import SideBar from "../components/SideBar.astro";
-
+import Header from '../components/Header.astro'
 const auth = getAuth(app);
 
 /* Verificar la sesión actual */
@@ -22,39 +22,34 @@ if (!user) {
 <Layout title="Testimonio">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
-  <h1>Bienvenido {user.displayName}</h1>
-  <p>Nos alegra verte aquí</p>
-  <form action="/api/auth/signout">
-    <button type="submit" class="boton-cerrar-sesion">Cerrar sesión</button>
+  <button type="submit" class="boton-cerrar-sesion">Cerrar sesión</button>
   </form>
   <div class="p-4 sm:ml-64">
 </div>
-  <SideBar
-  name={user.displayName}
-  op1="Opcion 1"
-  op2="Opcion 2"
-  op3="Opcion 3"
-  op4="Opcion 4"
-  >
+<Header
+texto2="Novedades"
+link2=""
+texto3="Nuestro Sistema"
+link3=""
+texto4="Chat"
+link4="/src/pages/chat.astro"
+/>
 </Layout>
-
-<SideBar name={user.displayName} />
-
 <form action="/api/testimonio/testimonio" method="post" id="formulario">
-  <div style="display: flex; flex-direction: column; align-items: center; height: 80vh;">
-    <div style="max-width: 1200px; width: 80%; padding: 16px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #ccc; height: 100vh; text-align: justify;">
-      <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; margin-bottom: 18px;">Instrucciones para proporcionar su testimonio médico:</h2>
-      <p style="font-size: 14px; margin-bottom: 8px;">
+  <div style="display: flex; flex-direction: column; align-items: center; height: 160vh; justify-content: center;">
+    <div style="max-width: 1300px; width: 80%; padding: 60px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #ccc; height: auto; text-align: justify; margin-top: -10vh;">
+      <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; font-size: 35px;margin-bottom: 18px;">Instrucciones para proporcionar su testimonio médico:</h2>
+      <p style="font-size: 25px; margin-bottom: 8px;">
       <br><strong>Extensión máxima:</strong> Su testimonio médico no debe exceder los 1000 caracteres. Por favor, sea conciso y enfóquese en los detalles relevantes.<br>
       <br><strong>Lenguaje apropiado:</strong> Evite el uso de palabras vulgares o inapropiadas. Mantenga un tono profesional y objetivo.<br>
       <br><strong>Enfoque en lo médico:</strong> Su testimonio debe centrarse exclusivamente en su experiencia médica relacionada con enfermedades cardiovasculares. <br>No incluya información personal no relevante.<br>
       <br><strong>Aceptación de términos y condiciones:</strong> Al proporcionar su testimonio, acepta los términos y condiciones que se encuentran a continuación.<br>
       <br>
     </p>
-    <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; margin-bottom: 17px;">Por favor, responda las siguientes preguntas:</h2>
-    <div style="font-size: 14px; margin-bottom: 14px;">
+    <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; font-size: 35px;margin-bottom: 17px;">Por favor, responda las siguientes preguntas:</h2>
+    <div style="font-size: 25px; margin-bottom: 14px;">
       <p><br>¿Has experimentado dolor en el pecho o malestar en el área del corazón en las últimas 24 horas?</p>
+      <br>
       <label>
         <input type="radio" name="chestPain" value="yes"> Sí
       </label>
@@ -62,8 +57,9 @@ if (!user) {
         <input type="radio" name="chestPain" value="no"> No
       </label>
     </div>
-    <div style="font-size: 14px; margin-bottom: 14px;">
-      <p>¿Has notado dificultad para respirar o falta de aliento durante actividades cotidianas, como subir escaleras o caminar distancias cortas?</p>
+    <div style="font-size: 25px; margin-bottom: 14px;">
+      <p><br>¿Has notado dificultad para respirar o falta de aliento durante actividades cotidianas, como subir escaleras o caminar distancias cortas?</p>
+      <br>
       <label>
         <input type="radio" name="shortnessOfBreath" value="yes"> Sí
       </label>
@@ -71,8 +67,9 @@ if (!user) {
         <input type="radio" name="shortnessOfBreath" value="no"> No
       </label>
     </div>
-    <div style="font-size: 14px; margin-bottom: 14px;">
-      <p>¿Tienes antecedentes familiares de enfermedades cardíacas, como ataques al corazón, hipertensión o accidentes cerebrovasculares?</p>
+    <div style="font-size: 25px; margin-bottom: 14px;">
+      <p><br>¿Tienes antecedentes familiares de enfermedades cardíacas, como ataques al corazón, hipertensión o accidentes cerebrovasculares?</p>
+      <br>
       <label>
         <input type="radio" name="familyHistory" value="yes"> Sí
       </label>
@@ -86,7 +83,7 @@ if (!user) {
     maxlength="1100"
     minlength="200"
     placeholder="Escribe tu testimonio..."
-    style="resize: none; font-size: 16px; padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); height: 25vh;"
+    style="resize: none; font-size: 25px; padding: 8px; width: 100%; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); height: 25vh;"
     id="testimonio"
     name="textoTestimonio"
   ></textarea>
@@ -173,12 +170,15 @@ fetch('/words.json')
 
 <style>
   .contenedor {
-        display: flex;
-        justify-content: right;
-        margin-top: -439px; /* Ajusta la distancia vertical */
- 
+    display: flex;
+    justify-content: right;
+    margin-top: 500px; /* Ajusta la distancia vertical */
+    position: fixed; /* Añadido para fijar la imagen en la pantalla */
+    right: -50px; /* Ajusta la distancia horizontal desde la derecha */
+    top: 0; /* Ajusta la distancia vertical desde la parte superior */
   }
 </style>
+
 <div class="contenedor">
   <img src="doctor_registro.png">
 <style>
@@ -194,5 +194,6 @@ fetch('/words.json')
     font-size: 16px; 
     cursor: pointer; 
     text-align: center; 
+    margin-top: 110px;
   }
 </style>
