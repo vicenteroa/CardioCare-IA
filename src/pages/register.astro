@@ -16,7 +16,6 @@ import Header from '../components/Header.astro'
     texto4="Chat"
     link4="/src/pages/chat.astro"
   />
-
   <div class="cont-form">
   <h1><br></br></h1>
   <p class="registration-text">
@@ -46,6 +45,10 @@ import Header from '../components/Header.astro'
     </div>
     <button type="submit" id="buttonSub">Registrarse</button>
   </form>
+  <div class="contenedor-img">
+    <img src="doctor_registro.png">
+  </div>
+
   </div>
   <script>
     import { showMessage } from "../resources/notification";
@@ -68,21 +71,20 @@ import Header from '../components/Header.astro'
   </script>
 </Layout>
 <script src="./scripts/checkbox.js"></script>
-<style>
-  .contenedor {
-        display: flex;
-        justify-content: right;
-        margin-top: -275px; /* Ajusta la distancia vertical */
- 
-  }
-</style>
-<div class="contenedor">
-  <img src="doctor_registro.png">
+
 <style>
   .cont-form
   {
     background-color:var(--background-color);
     transition: background-color 0.8s ease;
+  }
+  .contenedor-img {
+    display: flex;
+    justify-content: right;
+    margin-top: -265px; /* Ajusta la distancia vertical */
+  }
+  .contenedor-img img {
+    filter: drop-shadow(6px 2px 15px black);
   }
   form {
   display: flex;
