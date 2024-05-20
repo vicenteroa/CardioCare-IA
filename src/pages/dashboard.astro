@@ -20,6 +20,7 @@ if (!user) {
 ---
 
 <Layout title="Testimonio">
+  <main class="cont-fondo">
   <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <form action="/api/auth/signout">
@@ -27,20 +28,18 @@ if (!user) {
   </form>
 
 
-  <div class="p-4 sm:ml-64">
 </div>
 <Header
-texto2="Novedades"
-link2=""
-texto3="Nuestro Sistema"
-link3=""
-texto4="Chat"
+texto1={user.displayName}
+texto2="Editar perfil"
+texto3="Novedades"
+texto4="Terminos y Condiciones"
 link4="/src/pages/chat.astro"
 />
-</Layout>
+
 <form action="/api/testimonio/testimonio" method="post" id="formulario">
-  <div style="display: flex; flex-direction: column; align-items: center; height: 160vh; justify-content: center;">
-    <div style="max-width: 1300px; width: 80%; padding: 60px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #ccc; height: auto; text-align: justify; margin-top: -10vh;">
+  <div class="cont-formulario" style="display: flex; flex-direction: column; align-items: center; height: 160vh; justify-content: center;">
+    <div class="etq-form" style="max-width: 1300px; width: 80%; padding: 60px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); border: 1px solid #ccc; height: auto; text-align: justify; margin-top: -10vh;">
       <h2 style="text-align: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #007bff; font-size: 35px;margin-bottom: 18px;">Instrucciones para proporcionar su testimonio médico:</h2>
       <p style="font-size: 25px; margin-bottom: 8px;">
       <br><strong>Extensión máxima:</strong> Su testimonio médico no debe exceder los 1000 caracteres. Por favor, sea conciso y enfóquese en los detalles relevantes.<br>
@@ -101,9 +100,13 @@ link4="/src/pages/chat.astro"
     Enviar
   </button>
   </form>
+  <div class="contenedor">
+    <img src="doctor_registro.png">
+  </div>
 </div>
-+
 </div>
+</main>
+</Layout>
 
 <script>
 
@@ -172,8 +175,26 @@ fetch('/words.json')
   })
 </script>
 
-
 <style>
+  .etq-form{
+    background-color: var(--background-color);
+    transition: background-color 0.8s ease
+  }
+  :global(.dark) .etq-form{
+    background-color: var(--background-color-dark);
+    transition: background-color 0.8 ease;
+  }
+  .cont-formulario{
+    background-color: var(--background-color);
+    transition: background-color 0.8s ease
+  }
+  :global(.dark) .etq-form textarea {
+    color: black;
+  }
+  .cont-fondo{
+    background-color: var(--background-color);
+    transition: background-color 0.8s ease;
+  }
   .contenedor {
     display: flex;
     justify-content: right;
@@ -181,12 +202,8 @@ fetch('/words.json')
     position: fixed; /* Añadido para fijar la imagen en la pantalla */
     right: -50px; /* Ajusta la distancia horizontal desde la derecha */
     top: 0; /* Ajusta la distancia vertical desde la parte superior */
+    filter: drop-shadow(6px 2px 15px black);
   }
-</style>
-
-<div class="contenedor">
-  <img src="doctor_registro.png">
-<style>
   .boton-cerrar-sesion {
     display: block; 
     margin-left: auto; 
