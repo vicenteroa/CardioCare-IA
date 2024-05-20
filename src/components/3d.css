@@ -4,3 +4,13 @@
     transition: background-color 0.8s ease;
 
 }
+#cont-1
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:justify;
+}
