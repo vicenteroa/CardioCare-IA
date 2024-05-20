@@ -38,9 +38,6 @@ if (!user) {
   op4="Opcion 4"
   >
 </Layout>
-
-<SideBar name={user.displayName} />
-
 <form action="/api/testimonio/testimonio" method="post" id="formulario">
 <div style="display: flex; flex-direction: column; align-items: center; height: 80vh; ">
   <div style="max-width: 1200px; width: 80%; padding: 16px; border-radius: 8px; background-color: #ffffff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); height: 100vh; text-align: justify;">
@@ -102,7 +99,9 @@ if (!user) {
   </button>
   </form>
 </div>
++
 </div>
+
 <script>
 
 import { showMessage } from "../resources/notification";

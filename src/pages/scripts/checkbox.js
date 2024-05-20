@@ -10,6 +10,7 @@ button.style.cursor = 'not-allowed'
 
 // Agrega un evento de cambio a la casilla de verificación
 termsCheckbox.addEventListener('change', function () {
+  // eslint-disable-next-line @typescript-eslint/no-invalid-this
   if (this.checked) {
     button.disabled = false
     button.style.cursor = 'pointer'

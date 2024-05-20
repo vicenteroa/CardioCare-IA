@@ -32,9 +32,9 @@ export const GET: APIRoute = async ({ request, cookies, redirect }) => {
   cookies.set('session', sessionCookie, {
     path: '/',
     domain: undefined,
-    expires: undefined,
+    expires: new Date(Date.now() + fiveDays),
     maxAge: undefined,
-    httpOnly: undefined,
+    httpOnly: true,
     sameSite: undefined,
     secure: undefined,
     encode: undefined
