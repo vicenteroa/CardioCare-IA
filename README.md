@@ -1,5 +1,5 @@
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build)
-![CARDIOCARE](https://github.com/vicenteroa/CardioCare-IA/assets/79950811/e4a637df-000f-4173-8289-2e07f1a93717)
+![DarkImage](https://github.com/vicenteroa/CardioCare-IA/assets/79950811/3ecf3c7f-3415-4ed3-af27-dc141a1d8e0c)
+
 
 
 # Cardio Care IA 
@@ -87,3 +87,7 @@ Todos los comandos de la terminal que se pueden ejecutar en el entorno de astro:
     </td>
   </tr>
 </table>
+
+### 
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build)
+
