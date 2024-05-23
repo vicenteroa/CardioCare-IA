@@ -3,7 +3,7 @@ import { app } from "../firebase/server";
 import { getAuth } from "firebase-admin/auth";
 import Layout from "../layouts/Layout.astro";
 import Header from '../components/Header.astro'
-
+import {showMessage} from '../resources/notification.js'
 /* Verificar si el usuario está autenticado */
 const auth = getAuth(app);
 if (Astro.cookies.has("session")) {
@@ -14,6 +14,8 @@ if (Astro.cookies.has("session")) {
   }
 }
 ---
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <Layout title="Iniciar sesión">
   <Header
@@ -26,8 +28,12 @@ if (Astro.cookies.has("session")) {
     texto4="Chat"
     link4="/src/pages/chat.astro"
   />
-  <h1>Iniciar sesión</h1>
+
+  <div class="cont-form">
   <p class="registration-text">
+    <br>
+    <br>
+    <br>
     ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a></p>
   <form action="/api/auth/signin" method="post">
     <label for="email" for="email">Email</label>
@@ -36,6 +42,10 @@ if (Astro.cookies.has("session")) {
     <input type="password" name="password" id="password" />
     <button type="submit">Iniciar sesión</button>
   </form>
+  <div class="contenedor-img">
+    <img src="doctor_inicio.png">
+  </div>
+  </div>
 </Layout>
 <script>
   import {
@@ -44,7 +54,7 @@ if (Astro.cookies.has("session")) {
     signInWithEmailAndPassword,
   } from "firebase/auth";
   import { app } from "../firebase/client";
-
+  import { showMessage } from "../resources/notification";
   const auth = getAuth(app);
   // Esto evitará que el navegador almacene los datos de sesión
   auth.setPersistence(inMemoryPersistence);
@@ -59,6 +69,7 @@ if (Astro.cookies.has("session")) {
     if (!email || !password) {
       return;
     }
+    try{
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
@@ -73,11 +84,34 @@ if (Astro.cookies.has("session")) {
     });
 
     if (response.redirected) {
+      showMessage('Iniciando sesion por favor espere...')
+      setTimeout(() =>{
       window.location.assign(response.url);
+      },2000)
     }
+  }catch{
+    showMessage('Error al iniciar sesión por favor verifica correo y contraseña ','ERROR')
+  }
   });
 </script>
 <style>
+  .cont-form{
+    background-color: var(--background-color);
+    transition: background-color 0.8s ease;
+    margin-top: 20vh;
+
+  }
+  .contenedor-img {
+        display: flex;  
+        justify-content: right;
+        width: 50vh;
+        margin-top: -230px; /* Ajusta la distancia vertical */
+        background-color: var(--background-color);
+        transition: background-color 0.8s ease;
+  }
+  .contenedor-img img{
+      filter: drop-shadow(6px 2px 15px black);
+  }
   form {
     max-width: 400px;
     margin: 0 auto;
@@ -91,6 +125,7 @@ if (Astro.cookies.has("session")) {
     display: block;
     margin-bottom: 10px;
     font-weight: bold;
+    color: var(--background-color-chat-dark);
   }
 
   input {
@@ -99,6 +134,7 @@ if (Astro.cookies.has("session")) {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
+    color:var(--background-color-chat-dark);
   }
 
   button {

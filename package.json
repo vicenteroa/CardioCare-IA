@@ -8,7 +8,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint": "eslint --ext .ts,.js,.tsx ."
+    "lint": "eslint --ext .ts,.js,.tsx .",
+    "test": "npx cypress run",
+    "test:open": "npx cypress open"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -21,21 +23,26 @@
     "astro": "^4.6.1",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.3",
+    "date-fns-tz": "^3.1.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "firebase": "^10.11.0",
     "firebase-admin": "^12.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwindcss": "^3.4.3",
+    "toastify-js": "^1.12.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.43.1",
+    "@types/toastify-js": "^1.12.3",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
-    "@typescript-eslint/parser": "^7.4.0",
+    "@typescript-eslint/parser": "7.9.0",
+    "cypress": "^13.9.0",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-config-standard": "^17.1.0",
-    "eslint-plugin-astro": "^0.33.1",
+    "eslint-plugin-astro": "0.34.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"
   }

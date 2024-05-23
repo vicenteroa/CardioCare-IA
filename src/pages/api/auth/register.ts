@@ -3,8 +3,7 @@ import { getAuth } from 'firebase-admin/auth'
 import { app } from '../../../firebase/server'
 import { getFirestore } from 'firebase-admin/firestore'
 import * as bcrypt from 'bcrypt'
-
-export const POST: APIRoute = async ({ request, redirect }) => {
+export const POST: APIRoute = async ({ request }) => {
   const auth = getAuth(app)
   const db = getFirestore(app)
 
@@ -14,22 +13,24 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const password = formData.get('password')?.toString()
   const name = formData.get('name')?.toString()
   const Rut = formData.get('Rut')?.toString()
+  const Terminos = formData.get('terms')?.toString()
 
   if (!email || !password || !name || !Rut) {
-    return new Response(
-      'Faltan datos del formulario',
-      { status: 400 }
-    )
+    return new Response(JSON.stringify({
+      status: 400,
+      message: 'Faltan datos en el formulario'
+    }), { status: 400 })
   }
 
   /* Verificar la unicidad del correo electrónico */
   const usersRef = db.collection('users')
   const snapshot = await usersRef.where('email', '==', email).get()
+
   if (!snapshot.empty) {
-    return new Response(
-      'El correo electrónico ya está en uso',
-      { status: 400 }
-    )
+    return new Response(JSON.stringify({
+      status: 400,
+      message: 'El correo ya está en uso'
+    }), { status: 400 })
   }
 
   /* Encriptar la contraseña */
@@ -49,14 +50,18 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       name,
       email,
       password: hashedPassword,
-      Rut
+      Rut,
+      Terminos
     })
+    return new Response(JSON.stringify({
+      status: 200,
+      message: 'Usuario creado con éxito'
+    }), { status: 200 })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
-    return new Response(
-      'Algo salió mal' + error,
-      { status: 400 }
-    )
+    return new Response(JSON.stringify({
+      status: 400,
+      message: 'Algo salió mal' + error
+    }), { status: 400 })
   }
-  return redirect('/signin')
 }

@@ -1,0 +1,125 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+---
+<Layout title="Términos & Condiciones">
+  <Header
+    texto1="Inicio de Sesión"
+    link1="register"
+    texto2="Novedades"
+    link2=""
+    texto3="Nuestro Sistema"
+    link3=""
+    texto4="Chat"
+    link4="/src/pages/chat.astro"
+  />
+<div id="contenedor-terms">
+    <div class="overlay">
+        <div class="terminos">
+        <h1>Términos y Condiciones del Servicio</h1>
+        <p><strong>1. Introducción</strong></p>
+        <p>Los siguientes términos y condiciones regulan el uso del servicio de revisión de testimonios y recomendaciones médicas proporcionadas por la inteligencia artificial (IA) desarrollada en este sitio web, en adelante denominado "el Servicio". Al acceder y utilizar este Servicio, usted acepta estos términos y condiciones en su totalidad. Si no está de acuerdo con alguno de estos términos, no utilice este Servicio.</p>
+        
+        <p><strong>2. Naturaleza del Servicio</strong></p>
+        <p>El Servicio ofrece a los usuarios la posibilidad de enviar testimonios relacionados con su salud y recibir recomendaciones médicas basadas en la información proporcionada. Es importante tener en cuenta que las recomendaciones generadas por la IA se basan únicamente en los datos proporcionados por el usuario y no reemplazan la consulta con un profesional médico cualificado.</p>
+
+        <p><strong>3. Responsabilidad del Usuario</strong></p>
+        <p>Al utilizar este Servicio, usted acepta que es responsable de la veracidad y exactitud de la información proporcionada en los testimonios. Además, comprende y acepta que cualquier decisión tomada basada en las recomendaciones médicas generadas por la IA es bajo su propio riesgo y responsabilidad.</p>
+
+        <p><strong>4. Confidencialidad y Protección de Datos</strong></p>
+        <p>Nos comprometemos a proteger la privacidad y confidencialidad de la información proporcionada por los usuarios. Sin embargo, al utilizar este Servicio, usted autoriza expresamente la recopilación y procesamiento de sus datos personales con el propósito de generar recomendaciones médicas. Para obtener más información sobre cómo manejamos sus datos, consulte nuestra política de privacidad.</p>
+
+        <p><strong>5. Propiedad Intelectual</strong></p>
+        <p>Todos los derechos de propiedad intelectual relacionados con el Servicio, incluidos, entre otros, los derechos de autor, marcas comerciales y patentes, son propiedad de los propietarios de este sitio web. Usted se compromete a no copiar, modificar, distribuir o reproducir el Servicio sin el consentimiento previo por escrito.</p>
+
+        <p><strong>6. Limitación de Responsabilidad</strong></p>
+        <p>En la medida máxima permitida por la ley, los propietarios de este sitio web no serán responsables de ningún daño directo, indirecto, incidental, especial o consecuente derivado del uso o la imposibilidad de utilizar este Servicio.</p>
+
+        <p><strong>7. Modificaciones de los Términos y Condiciones</strong></p>
+        <p>Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento sin previo aviso. Se recomienda revisar periódicamente esta página para estar al tanto de cualquier cambio.</p>
+
+        <p><strong>8. Ley Aplicable y Jurisdicción</strong></p>
+        <p>Estos términos y condiciones se rigen por las leyes de Chile. Cualquier disputa que surja en relación con este Servicio estará sujeta a la jurisdicción exclusiva de los tribunales de Chile.</p>
+
+        <p><strong>9. Disposiciones Adicionales para Usuarios en Chile</strong></p>
+        <p>Para usuarios ubicados en Chile, tenga en cuenta lo siguiente:</p>
+        <ul>
+            <li>Los términos y condiciones de este Servicio se interpretarán de acuerdo con las leyes chilenas.</li>
+            <li>Cualquier conflicto legal relacionado con este Servicio se resolverá exclusivamente en los tribunales chilenos.</li>
+            <li>La renuncia a cualquier término o condición de este Servicio no se considerará una renuncia a otros términos o condiciones, ni afectará de ninguna manera la validez de los mismos.</li>
+        </ul>
+
+        <p>Al utilizar este Servicio, usted acepta cumplir con estos términos y condiciones. Si tiene alguna pregunta o inquietud sobre estos términos, no dude en ponerse en contacto con nosotros en <a href="mailto:cardiocareia@gmail.com">Clickea aquí</a>
+.       </p>
+        <p>De acuerdo con la Ley N° 19.223 sobre Delitos Informáticos en Chile, cualquier acceso no autorizado, interferencia, interrupción, daño o mal uso de la información y sistemas informáticos está sujeto a sanciones penales. Al utilizar este Servicio, usted acepta no realizar ninguna de estas actividades.</p>
+
+        <p><strong>10. Ley de Propiedad Intelectual</strong></p>
+        <p>La Ley N° 17.336 sobre Propiedad Intelectual protege los derechos de autor en Chile. Cualquier uso no autorizado del contenido y servicios proporcionados en este sitio web puede ser considerado una violación de nuestros derechos de propiedad intelectual.</p>
+
+        <p><strong>11. Ley de Protección al Consumidor</strong></p>
+        <p>La Ley N° 19.496 establece normas sobre protección de los derechos de los consumidores. Aunque nos esforzamos por asegurar la calidad y exactitud de nuestro Servicio, no garantizamos que esté libre de errores o que siempre esté disponible. No seremos responsables de ningún daño que pueda resultar del uso de este Servicio.</p>
+
+        <p><strong>12. Ley de Protección de Datos Personales</strong></p>
+        <p>La Ley N° 19.628 sobre Protección de la Vida Privada protege los datos personales en Chile. Nos comprometemos a manejar sus datos personales de acuerdo con esta ley. Al utilizar este Servicio, usted acepta nuestra política de privacidad y el manejo de sus datos personales.</p>
+        </div>
+    </div>
+</div>
+
+</Layout>
+<style>
+/* Estilos para el contenedor de los términos y condiciones */
+#contenedor-terms {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* Estilos para el encabezado de los términos y condiciones */
+.terminos h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilos para los párrafos de los términos y condiciones */
+.terminos p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Estilos para la lista de disposiciones adicionales */
+.terminos ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+/* Estilos para los elementos de la lista de disposiciones adicionales */
+.terminos ul li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Estilos para el overlay */
+.overlay {
+  background-color: rgba(255, 255, 255, 0.5);
+  position:relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* Estilos para el contenedor principal */
+.terminos {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  overflow: auto;
+}
+
+</style>
