@@ -2,30 +2,26 @@
 export default {
 	printWidth: 100,
 	semi: false,
-	singleQuote: false,
+	singleQuote: true,
 	jsxSingleQuote: false,
-	quoteProps: "consistent",
+	quoteProps: 'consistent',
 	tabWidth: 2,
-	trailingComma: "es5",
-	useTabs: true,
-	endOfLine: "lf",
-	arrowParens: "always",
-	plugins: [
-		"prettier-plugin-astro",
-		"prettier-plugin-tailwindcss",
-		"prettier-plugin-astro-organize-imports",
-	],
+	trailingComma: 'es5',
+	useTabs: false,
+	endOfLine: 'lf',
+	arrowParens: 'always',
+	plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 	overrides: [
 		{
-			files: ["*.json", "*.md", "*.toml", "*.yml"],
+			files: ['*.json', '*.md', '*.toml', '*.yml'],
 			options: {
 				useTabs: false,
 			},
 		},
 		{
-			files: "*.astro",
+			files: '*.astro',
 			options: {
-				parser: "astro",
+				parser: 'astro',
 			},
 		},
 	],

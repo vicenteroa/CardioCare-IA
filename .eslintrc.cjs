@@ -3,6 +3,7 @@ process.env.ESLINT_TSCONFIG = 'tsconfig.json'
  * @type {import("eslint").Linter.Config}
  */
 module.exports = {
+  // ignorePatterns: ['**/*.astro'],
   env: {
     browser: true,
     es2021: true,

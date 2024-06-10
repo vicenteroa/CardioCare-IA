@@ -1,20 +1,25 @@
 ---
-import { app } from "../firebase/server";
-import { getAuth } from "firebase-admin/auth";
-import Layout from "../layouts/Layout.astro";
+import { app } from '../firebase/server'
+import { getAuth } from 'firebase-admin/auth'
+import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.astro'
-import {showMessage} from '../resources/notification.js'
+import { showMessage } from '../resources/notification.js'
 /* Verificar si el usuario está autenticado */
-const auth = getAuth(app);
-if (Astro.cookies.has("session")) {
-  const sessionCookie = Astro.cookies.get("session").value;
-  const decodedCookie = await auth.verifySessionCookie(sessionCookie);
+const auth = getAuth(app)
+if (Astro.cookies.has('session')) {
+  const sessionCookie = Astro.cookies.get('session').value
+  const decodedCookie = await auth.verifySessionCookie(sessionCookie)
   if (decodedCookie) {
-    return Astro.redirect("/dashboard");
+    return Astro.redirect('/dashboard')
   }
 }
 ---
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+/>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 <Layout title="Iniciar sesión">
@@ -30,87 +35,79 @@ if (Astro.cookies.has("session")) {
   />
 
   <div class="cont-form">
-  <p class="registration-text">
-    <br>
-    <br>
-    <br>
-    ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a></p>
-  <form action="/api/auth/signin" method="post">
-    <label for="email" for="email">Email</label>
-    <input type="email" name="email" id="email" />
-    <label for="password">Contraseña</label>
-    <input type="password" name="password" id="password" />
-    <button type="submit">Iniciar sesión</button>
-  </form>
-  <div class="contenedor-img">
-    <img src="doctor_inicio.png">
-  </div>
+    <p class="registration-text">
+      <br />
+      <br />
+      <br />
+      ¿Eres nuevo aquí? <a href="/register">Crear una cuenta</a>
+    </p>
+    <form action="/api/auth/signin" method="post">
+      <label for="email" for="email">Email</label>
+      <input type="email" name="email" id="email" />
+      <label for="password">Contraseña</label>
+      <input type="password" name="password" id="password" />
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <div class="contenedor-img">
+      <img src="doctor_inicio.png" />
+    </div>
   </div>
 </Layout>
 <script>
-  import {
-    getAuth,
-    inMemoryPersistence,
-    signInWithEmailAndPassword,
-  } from "firebase/auth";
-  import { app } from "../firebase/client";
-  import { showMessage } from "../resources/notification";
-  const auth = getAuth(app);
+  import { getAuth, inMemoryPersistence, signInWithEmailAndPassword } from 'firebase/auth'
+  import { app } from '../firebase/client'
+  import { showMessage } from '../resources/notification'
+  const auth = getAuth(app)
   // Esto evitará que el navegador almacene los datos de sesión
-  auth.setPersistence(inMemoryPersistence);
+  auth.setPersistence(inMemoryPersistence)
 
-  const form = document.querySelector("form") as HTMLFormElement;
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const email = formData.get("email")?.toString();
-    const password = formData.get("password")?.toString();
+  const form = document.querySelector('form') as HTMLFormElement
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    const formData = new FormData(form)
+    const email = formData.get('email')?.toString()
+    const password = formData.get('password')?.toString()
 
     if (!email || !password) {
-      return;
+      return
     }
-    try{
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const idToken = await userCredential.user.getIdToken();
-    const response = await fetch("/api/auth/signin", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${idToken}`,
-      },
-    });
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, password)
+      const idToken = await userCredential.user.getIdToken()
+      const response = await fetch('/api/auth/signin', {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${idToken}`,
+        },
+      })
 
-    if (response.redirected) {
-      showMessage('Iniciando sesion por favor espere...')
-      setTimeout(() =>{
-      window.location.assign(response.url);
-      },2000)
+      if (response.redirected) {
+        showMessage('Iniciando sesion por favor espere...')
+        setTimeout(() => {
+          window.location.assign(response.url)
+        }, 2000)
+      }
+    } catch {
+      showMessage('Error al iniciar sesión por favor verifica correo y contraseña ', 'ERROR')
     }
-  }catch{
-    showMessage('Error al iniciar sesión por favor verifica correo y contraseña ','ERROR')
-  }
-  });
+  })
 </script>
 <style>
-  .cont-form{
+  .cont-form {
     background-color: var(--background-color);
     transition: background-color 0.8s ease;
     margin-top: 20vh;
-
   }
   .contenedor-img {
-        display: flex;  
-        justify-content: right;
-        width: 50vh;
-        margin-top: -230px; /* Ajusta la distancia vertical */
-        background-color: var(--background-color);
-        transition: background-color 0.8s ease;
+    display: flex;
+    justify-content: right;
+    width: 50vh;
+    margin-top: -230px; /* Ajusta la distancia vertical */
+    background-color: var(--background-color);
+    transition: background-color 0.8s ease;
   }
-  .contenedor-img img{
-      filter: drop-shadow(6px 2px 15px black);
+  .contenedor-img img {
+    filter: drop-shadow(6px 2px 15px black);
   }
   form {
     max-width: 400px;
@@ -134,7 +131,7 @@ if (Astro.cookies.has("session")) {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    color:var(--background-color-chat-dark);
+    color: var(--background-color-chat-dark);
   }
 
   button {
