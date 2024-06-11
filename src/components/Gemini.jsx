@@ -12,6 +12,7 @@ const AiWithText = () => {
   const [loading, setLoading] = useState(false)
 
   const generativeAI = new GoogleGenerativeAI(key)
+  console.log('key', key)
   const generativeModel = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
 
   const fetchTextInsights = async (userInput) => {
@@ -41,7 +42,6 @@ const AiWithText = () => {
 
   return (
     <div>
-      <p>Gemini api: {key}</p>
       {loading && !aiResponse ? (
         <p style={{ margin: '30px 0' }}>Cargando ...</p>
       ) : (
