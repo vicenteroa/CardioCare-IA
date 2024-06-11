@@ -6,6 +6,7 @@ export default {
   jsxSingleQuote: false,
   quoteProps: 'consistent',
   tabWidth: 2,
+  trailingComma: 'none',
   useTabs: false,
   endOfLine: 'lf',
   arrowParens: 'always',
