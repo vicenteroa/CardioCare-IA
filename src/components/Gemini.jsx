@@ -1,9 +1,19 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
+let type
+let key =
+  import.meta.env.MODE === 'development'
+    ? import.meta.env.PUBLIC_APIKEYGEMINI_DEVELOPMENT
+    : import.meta.env.SECRET_APIKEYGEMINI_PRODUCTION
 
-const key = import.meta.env.PUBLIC_APIKEYGEMINI
+if (import.meta.env.MODE === 'development') {
+  type = 'PUBLIC_APIKEYGEMINI_DEVELOPMENT'
+} else {
+  type = 'SECRET_APIKEYGEMINI_PRODUCTION'
+}
 
+console.log(`Usando la clave: ${type}`)
 const AiWithText = () => {
   const [search, setSearch] = useState('')
   const [aiResponse, setResponse] = useState('')
