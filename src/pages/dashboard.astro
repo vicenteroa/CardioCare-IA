@@ -2,7 +2,6 @@
 import { app } from '../firebase/server'
 import { getAuth } from 'firebase-admin/auth'
 import Layout from '../layouts/Layout.astro'
-import SideBar from '../components/SideBar.astro'
 import Header from '../components/Header.astro'
 const auth = getAuth(app)
 
@@ -131,7 +130,7 @@ if (!user) {
         </button>
       </div>
       <div class="contenedor">
-        <img src="doctor_registro.png" />
+        <img src='/doctor_registro.png' alt='Doctor Registro' />
       </div>
     </div>
   </form>
@@ -209,6 +208,14 @@ if (!user) {
         }
       })
     })
+</script>
+
+<script>
+  const botonEnviar = document.querySelector('#enviar')
+  botonEnviar.addEventListener('click', () => {
+    const textarea = document.querySelector('#testimonio') as HTMLTextAreaElement
+    sessionStorage.setItem('textoTestimonio', textarea.value)
+  })
 </script>
 
 <style>
