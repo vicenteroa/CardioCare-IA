@@ -2,19 +2,21 @@ import { GoogleGenerativeAI } from '@google/generative-ai'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
 
+const key = import.meta.env.PUBLIC_APIKEYGEMINI
+
 const AiWithText = () => {
   const [search, setSearch] = useState('')
   const [aiResponse, setResponse] = useState('')
   const [loading, setLoading] = useState(false)
 
-  const generativeAI = new GoogleGenerativeAI('AIzaSyAeEt7nyJzFKMoZ-a-bK-G7gnr1UhLD9X8')
+  const generativeAI = new GoogleGenerativeAI(key)
   const generativeModel = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
 
   const fetchTextInsights = async (userInput) => {
     setLoading(true)
     setResponse('')
 
-    const prompt = `Eres Care IA tu misión es dar orientación saludable a pacientes con cardiovascularidad con sus síntomas: ${userInput}`
+    const prompt = `Eres Care IA tu misión es dar orientación saludable a pacientes con sus síntomas: ${userInput}`
     try {
       const result = await generativeModel.generateContent(prompt)
       const response = await result.response
