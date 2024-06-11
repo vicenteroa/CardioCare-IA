@@ -3,7 +3,6 @@ import { app } from '../firebase/server'
 import { getAuth } from 'firebase-admin/auth'
 import Layout from '../layouts/Layout.astro'
 import Header from '../components/Header.astro'
-import { showMessage } from '../resources/notification.js'
 /* Verificar si el usuario está autenticado */
 const auth = getAuth(app)
 if (Astro.cookies.has('session')) {
@@ -49,7 +48,7 @@ if (Astro.cookies.has('session')) {
       <button type="submit">Iniciar sesión</button>
     </form>
     <div class="contenedor-img">
-      <img src="doctor_inicio.png" />
+      <img src="doctor_inicio.png" alt="doctor_inicio" />
     </div>
   </div>
 </Layout>
@@ -77,8 +76,8 @@ if (Astro.cookies.has('session')) {
       const response = await fetch('/api/auth/signin', {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${idToken}`,
-        },
+          Authorization: `Bearer ${idToken}`
+        }
       })
 
       if (response.redirected) {

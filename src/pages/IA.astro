@@ -7,4 +7,10 @@ import Header from '../components/Header.astro'
 <Layout title="IA">
   <Header />
   <AiWithText client:load />
+  <style>
+    body {
+      background-color: var(--background-color);
+      transition: background-color 0.8s ease;
+    }
+  </style>
 </Layout>
