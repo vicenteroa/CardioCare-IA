@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 const key =
   import.meta.env.MODE === 'development'
     ? import.meta.env.PUBLIC_APIKEYGEMINI_DEVELOPMENT
-    : import.meta.env.APIKEYGEMINI_PRODUCTION
+    : import.meta.env.PROD.APIKEYGEMINI_PRODUCTION
 
 const AiWithText = () => {
   const [search, setSearch] = useState('')
@@ -41,6 +41,7 @@ const AiWithText = () => {
 
   return (
     <div>
+      <p>Gemini api: {key}</p>
       {loading && !aiResponse ? (
         <p style={{ margin: '30px 0' }}>Cargando ...</p>
       ) : (
