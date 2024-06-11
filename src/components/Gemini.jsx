@@ -1,10 +1,8 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
-const key =
-  import.meta.env.MODE === 'development'
-    ? import.meta.env.PUBLIC_APIKEYGEMINI_DEVELOPMENT
-    : import.meta.env.APIKEYGEMINI_PRODUCTION
+
+const key = import.meta.env.PUBLIC_APIKEYGEMINI
 
 const AiWithText = () => {
   const [search, setSearch] = useState('')
@@ -12,7 +10,7 @@ const AiWithText = () => {
   const [loading, setLoading] = useState(false)
 
   const generativeAI = new GoogleGenerativeAI(key)
-  console.log('key', key)
+  // console.log('key', key)
   const generativeModel = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
 
   const fetchTextInsights = async (userInput) => {
