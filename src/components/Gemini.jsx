@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 const key =
   import.meta.env.MODE === 'development'
     ? import.meta.env.PUBLIC_APIKEYGEMINI_DEVELOPMENT
-    : import.meta.env.PROD.APIKEYGEMINI_PRODUCTION
+    : import.meta.env.APIKEYGEMINI_PRODUCTION
 
 const AiWithText = () => {
   const [search, setSearch] = useState('')
