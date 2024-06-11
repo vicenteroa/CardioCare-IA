@@ -1,58 +1,51 @@
-/* eslint-disable space-before-function-paren */
-import React, { useState } from 'react'
 import { GoogleGenerativeAI } from '@google/generative-ai'
+import { useState, useEffect } from 'react'
+import ReactMarkdown from 'react-markdown'
 
-const AiwithText = () => {
-  const genAI = new GoogleGenerativeAI('AIzaSyAeEt7nyJzFKMoZ-a-bK-G7gnr1UhLD9X8')
-
+const AiWithText = () => {
   const [search, setSearch] = useState('')
   const [aiResponse, setResponse] = useState('')
   const [loading, setLoading] = useState(false)
 
-  /**
-   * Generative AI Call to fetch text insights
-   */
-  async function aiRun() {
+  const generativeAI = new GoogleGenerativeAI('AIzaSyAeEt7nyJzFKMoZ-a-bK-G7gnr1UhLD9X8')
+  const generativeModel = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
+
+  const fetchTextInsights = async (userInput) => {
     setLoading(true)
     setResponse('')
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' })
-    const prompt = 'Eres un chat que da recomendaciones cardiovasculares'
-    const result = await model.generateContent(prompt)
-    const response = await result.response
-    const text = response.text()
-    setResponse(text)
-    setLoading(false)
+
+    const prompt = `Eres Care IA tu misión es dar orientación saludable a pacientes con cardiovascularidad con sus síntomas: ${userInput}`
+    try {
+      const result = await generativeModel.generateContent(prompt)
+      const response = await result.response
+      const text = response.text()
+      setResponse(text)
+    } catch (error) {
+      console.error('Error al conectarse con Gemini:', error)
+    } finally {
+      setLoading(false)
+    }
   }
 
-  const handleChangeSearch = (e) => {
-    setSearch(e.target.value)
-  }
-
-  const handleClick = () => {
-    aiRun()
-  }
+  useEffect(() => {
+    const sessionSearch = sessionStorage.getItem('textoTestimonio')
+    if (sessionSearch) {
+      setSearch(sessionSearch)
+      fetchTextInsights(sessionSearch)
+    }
+  }, [])
 
   return (
     <div>
-      <div style={{ display: 'flex' }}>
-        <input
-          placeholder="Search Food with Category using Generative AI"
-          onChange={(e) => handleChangeSearch(e)}
-        />
-        <button style={{ marginLeft: '20px' }} onClick={() => handleClick()}>
-          Search
-        </button>
-      </div>
-
-      {loading == true && aiResponse == '' ? (
-        <p style={{ margin: '30px 0' }}>Loading ...</p>
+      {loading && !aiResponse ? (
+        <p style={{ margin: '30px 0' }}>Cargando ...</p>
       ) : (
         <div style={{ margin: '30px 0' }}>
-          <p>{aiResponse}</p>
+          <ReactMarkdown>{aiResponse}</ReactMarkdown>
         </div>
       )}
     </div>
   )
 }
 
-export default AiwithText
+export default AiWithText

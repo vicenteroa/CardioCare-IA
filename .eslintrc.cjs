@@ -50,5 +50,5 @@ module.exports = {
     sourceType: 'module'
   },
   plugins: ['@typescript-eslint'],
-  rules: {}
+  rules: { 'multiline-ternary': 'off' }
 }

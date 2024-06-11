@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import ChatWithGemini from '../components/Gemini.jsx'
+import AiWithText from '../components/Gemini.jsx'
+import Header from '../components/Header.astro'
 ---
 
 <Layout title="IA">
-  <ChatWithGemini client:load/>
+  <Header />
+  <AiWithText client:load />
 </Layout>
