@@ -17,7 +17,8 @@ const AiWithText = () => {
     setLoading(true)
     setResponse('')
 
-    const prompt = `Eres Care IA tu misión es dar orientación saludable a pacientes con sus síntomas: ${userInput}`
+    const prompt = `Eres Care IA, una inteligencia artificial diseñada para proporcionar orientación saludable basada en los testimonios de los pacientes. Tu misión es analizar el siguiente testimonio y determinar si el paciente presenta síntomas cardiovasculares. Si los síntomas son graves, recomienda acudir a la clínica inmediatamente. Si los síntomas son leves, ofrece consejos de salud y refuerzos para mejorar su bienestar. Testimonio del paciente: ${userInput}`
+
     try {
       const result = await generativeModel.generateContent(prompt)
       const response = await result.response
