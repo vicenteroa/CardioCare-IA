@@ -1,0 +1,45 @@
+---
+interface Props {
+    nombre: string,
+    direccion: string,
+    link?: string,
+    numero?: string,
+    contLink?: string
+}
+const {
+    nombre, direccion, link, numero, contLink
+} = Astro.props
+
+---
+<div class="box">
+    <h3> {nombre} </h3>
+    <p>{direccion}</p>
+    <p>{numero}</p>
+    <a href={link} role="link" class="relative after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-full after:origin-bottom-left after:scale-x-100 after:bg-neutral-200 after:transition-transform after:duration-150 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0">{contLink}</a>
+  </div>
+
+  <style>
+  .box {
+    background-color: #28a7dc;
+    color: white!important;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    width: calc(50% - 20px); 
+    transition: transform 0.3s ease;
+  }
+
+  .box:hover {
+    transform: scale(1.05);
+  }
+
+  .box h3 {
+    margin-top: 0;
+  }
+
+  .box a {
+    color: white!important;
+    text-decoration: none;
+
+  } 
+</style>
