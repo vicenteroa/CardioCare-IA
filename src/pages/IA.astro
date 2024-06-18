@@ -8,11 +8,66 @@ import Header from '../components/Header.astro'
   <Header />
   <AiWithText client:load />
   <!-- Citas medicas (Amaya) -->
+  <h2>¿Deseas agendar una cita médica?</h2>
+  <div class="container">
+    <div class="box">
+      <h3>Centro Dávila Las Condes</h3>
+      <p>Av. El Bosque Norte 0110, Las Condes, RM</p>
+      <a href="https://www.davila.cl/davila-las-condes">Ir al sitio web</a>
+    </div>
 
+    <div class="box">
+      <h3>Centro Dávila Maipú</h3>
+      <p>Av. Pajaritos 1948, Maipú, RM</p>
+      <a href="https://www.davila.cl/centro-davila-maipu/">Ir al sitio web</a>
+    </div>
+
+    <div class="box">
+      <h3>Centro Dávila Ñuñoa</h3>
+      <p>Av. Irarrázaval 2401, Ñuñoa, RM</p>
+      <a href="https://www.davila.cl/centro-medico-davila-nunoa">Ir al sitio web</a>
+    </div>
+
+    <div class="box">
+      <h3>Clínica Dávila Recoleta</h3>
+      <p>Av. Recoleta 464, Recoleta, Región Metropolitana 
+        <br>Número de contacto: (2) 2270 2700</p>
+    </div>
+
+    <div class="box">
+      <h3>Clínica Dávila Vespucio</h3>
+      <p>Av. Serafín Zamora 190, La Florida, RM</p>
+      <a href="https://www.davila.cl/davilavespucio">Ir al sitio web</a>
+    </div>
+  </div>
   <style>
     body {
       background-color: var(--background-color);
       transition: background-color 0.8s ease;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .box {
+      background-color: #28a7dc;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+      width: calc(50% - 20px); 
+    }
+
+    .box h3 {
+      margin-top: 0;
+    }
+
+    .box a {
+      display: block;
+      margin-top: 10px;
+      color: white; 
     }
   </style>
 </Layout>
