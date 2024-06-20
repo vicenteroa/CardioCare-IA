@@ -8,14 +8,37 @@ import Box from '../components/box.astro'
 <Layout title="IA">
   <Header />
   <AiWithText client:load />
-  <!-- Citas medicas (Amaya) -->
   <h2 class="Titulo">¿Deseas agendar una cita médica?</h2>
   <div class="container">
-    <Box nombre="Centro Dávila Las Condes" direccion='Av. El Bosque Norte 0110, Las Condes, RM' contLink='Ir al sitio web' link='https://www.davila.cl/davila-las-condes'/>
-    <Box nombre="Centro Dávila Maipú" direccion='Av. Pajaritos 1948, Maipú, RM' contLink='Ir al sitio web' link='https://www.davila.cl/centro-davila-maipu/'/>
-    <Box nombre="Centro Dávila Ñuñoa" direccion='Av. Irarrázaval 2401, Ñuñoa, RM' contLink='Ir al sitio web' link='https://www.davila.cl/centro-medico-davila-nunoa'/>
-    <Box nombre="Clínica Dávila Recoleta" direccion='Av. Recoleta 464, Recoleta, Región Metropolitana' numero='Número de contacto: (2) 2270 2700'/>
-    <Box nombre="Clínica Dávila Vespucio" direccion='Av. Serafín Zamora 190, La Florida, RM' contLink='Ir al sitio web' link='https://www.davila.cl/davilavespucio'/>
+    <Box
+      nombre="Centro Dávila Las Condes"
+      direccion="Av. El Bosque Norte 0110, Las Condes, RM"
+      contLink="Ir al sitio web"
+      link="https://www.davila.cl/davila-las-condes"
+    />
+    <Box
+      nombre="Centro Dávila Maipú"
+      direccion="Av. Pajaritos 1948, Maipú, RM"
+      contLink="Ir al sitio web"
+      link="https://www.davila.cl/centro-davila-maipu/"
+    />
+    <Box
+      nombre="Centro Dávila Ñuñoa"
+      direccion="Av. Irarrázaval 2401, Ñuñoa, RM"
+      contLink="Ir al sitio web"
+      link="https://www.davila.cl/centro-medico-davila-nunoa"
+    />
+    <Box
+      nombre="Clínica Dávila Recoleta"
+      direccion="Av. Recoleta 464, Recoleta, Región Metropolitana"
+      numero="Número de contacto: (2) 2270 2700"
+    />
+    <Box
+      nombre="Clínica Dávila Vespucio"
+      direccion="Av. Serafín Zamora 190, La Florida, RM"
+      contLink="Ir al sitio web"
+      link="https://www.davila.cl/davilavespucio"
+    />
   </div>
   <style>
     body {
