@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
+import './AiWithText.css' // Importa tu archivo CSS aquí
 
 const key = import.meta.env.PUBLIC_APIKEYGEMINI
 
@@ -10,7 +11,6 @@ const AiWithText = () => {
   const [loading, setLoading] = useState(false)
 
   const generativeAI = new GoogleGenerativeAI(key)
-  // console.log('key', key)
   const generativeModel = generativeAI.getGenerativeModel({ model: 'gemini-pro' })
 
   const fetchTextInsights = async (userInput) => {
@@ -40,13 +40,18 @@ const AiWithText = () => {
   }, [])
 
   return (
-    <div>
+    <div className="ai-with-text">
       {loading && !aiResponse ? (
-        <p style={{ margin: '30px 0' }}>Cargando ...</p>
-      ) : (
-        <div style={{ margin: '30px 0' }}>
-          <ReactMarkdown>{aiResponse}</ReactMarkdown>
+        <div className="spinner-container">
+          <div className="spinner"></div>
         </div>
+      ) : (
+        <>
+          <p className="titulo-respuesta">Según su testimonio...</p>
+          <div className="response-container">
+            <ReactMarkdown>{aiResponse}</ReactMarkdown>
+          </div>
+        </>
       )}
     </div>
   )
