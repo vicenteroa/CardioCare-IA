@@ -12,7 +12,7 @@ const { nombre, direccion, link, numero, contLink } = Astro.props
 <div class="box">
   <h3>{nombre}</h3>
   <p>{direccion}</p>
-  <p>{numero}</p>
+  <a href="tel:(2) 2270 2700">{numero}</a>
   <a
     href={link}
     role="link"
@@ -30,10 +30,15 @@ const { nombre, direccion, link, numero, contLink } = Astro.props
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: calc(50% - 20px);
     transition: transform 0.3s ease;
+    transition: background-color 0.9s ease;
   }
 
   .box:hover {
     transform: scale(1.05);
+  }
+
+  .box:hover {
+    background-color: #40b9db;
   }
 
   .box h3 {
