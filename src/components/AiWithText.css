@@ -41,7 +41,7 @@
   }
   .titulo-respuesta {
     text-align: center; /* Alinea el texto al centro */
-    color: #2b8dd8; /* Color del texto */
+    color: #000000; /* Color del texto */
     margin-bottom: 10px; /* Espacio antes del recuadro de la respuesta */
     font-family: 'Arial', sans-serif; /* Fuente del texto */
     font-size: 18px; /* Tamaño del texto */
