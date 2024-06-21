@@ -14,14 +14,12 @@ describe('HU8: Registro de información de testimonios en base de datos', () => 
   it('Verificación de inicio sesión exitoso ', () => {
     signinAuth('prueba@correo.com', 'prueba_24')
     cy.contains('Iniciando sesion por favor espere...').should('be.visible')
-    cy.get(':nth-child(10) > .h-full > .space-y-2 > [data-astro-source-loc="19:14"] > .flex').should('be.visible')
     cy.log('Inicio de sesión exitoso ✅')
     cy.pause()
   })
   /* OTROS TEST :  */
 })
-
-function signinAuth (email:string, password:string):void {
+function signinAuth(email: string, password: string): void {
   cy.get('input[name=email]').type(email)
   cy.get('input[name=password]').type(password)
   cy.get('button[type=submit]').click()

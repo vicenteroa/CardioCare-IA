@@ -7,7 +7,7 @@ Descripción:
 
 ➡️ Esto se logra mediante la verificación de la autenticidad de los datos, como direcciones de correo electrónico válidas y contraseñas seguras, asegurando así que el acceso al sistema sea solo para usuarios autorizados
 */
-
+import iniciarSesion from './functions/IniciarSesion.cy'
 describe('HU4:Validación de información de usuario en BBDD', () => {
   beforeEach(() => {
     cy.visit('http://localhost:4321/signin')
@@ -22,7 +22,9 @@ describe('HU4:Validación de información de usuario en BBDD', () => {
 
   it('Verificar que NO inicie sesión con credenciales incorrectas', () => {
     iniciarSesion('correo@invalido.com', 'contraseña_invalida')
-    cy.contains('Error al iniciar sesión por favor verifica correo y contraseña ').should('be.visible')
+    cy.contains('Error al iniciar sesión por favor verifica correo y contraseña ').should(
+      'be.visible'
+    )
     cy.log('Inicio de sesión fallido con credenciales incorrectas ✅')
   })
 
@@ -31,9 +33,3 @@ describe('HU4:Validación de información de usuario en BBDD', () => {
     cy.log('Inicio de sesión fallido sin ingresar credenciales ✅')
   })
 })
-
-function iniciarSesion (email:string, password:string):void {
-  cy.get('input[name=email]').type(email)
-  cy.get('input[name=password]').type(password)
-  cy.get('button[type=submit]').click()
-}
