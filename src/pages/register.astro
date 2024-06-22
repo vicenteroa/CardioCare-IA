@@ -44,6 +44,7 @@ import Header from '../components/Header.astro'
     <input type="email" name="email" id="email" placeholder="Ingresa tu correo electrónico" />
     <label for="password">Contraseña</label>
     <input type="password" name="password" id="password" placeholder="Ingresa tu contraseña" />
+    <button type="button" onclick="togglePasswordVisibility()">Ver/Ocultar</button>
     <div class="check-cont">
       <input type="checkbox" id="terms" name="terms" value="Si" required />
       <label for="terms" class="checkbox-label"
@@ -76,6 +77,15 @@ import Header from '../components/Header.astro'
       }, 2000)
     }
   })
+
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    if (passwordInput.getAttribute('type') === 'password') {
+      passwordInput.setAttribute('type', 'text');
+    } else {
+      passwordInput.setAttribute('type', 'password');
+    }
+  }
 </script>
 
 <script src="./scripts/checkbox.js"></script>
@@ -84,11 +94,15 @@ import Header from '../components/Header.astro'
   .cont-form {
     background-color: var(--background-color);
     transition: background-color 0.8s ease;
+    margin-top: 20vh;
   }
   .contenedor-img {
     display: flex;
     justify-content: right;
-    margin-top: -265px; /* Ajusta la distancia vertical */
+    margin-top: 500px; /* Ajusta la distancia vertical */
+    position: fixed; /* Añadido para fijar la imagen en la pantalla */
+    right: -50px; /* Ajusta la distancia horizontal desde la derecha */
+    top: 0; /* Ajusta la distancia vertical desde la parte superior */
   }
   .contenedor-img img {
     filter: drop-shadow(6px 2px 15px black);
@@ -123,14 +137,14 @@ import Header from '../components/Header.astro'
 
   button {
     position: absolute;
-    bottom: 26.1vh;
+    bottom: 21vh;
     left: 50%;
     transform: translateX(-50%);
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 3px;
-    padding: 10px 20px;
+    padding: 6px 15px;
     cursor: pointer;
   }
 
@@ -155,5 +169,9 @@ import Header from '../components/Header.astro'
   <style > .contenedor {
     display: flex;
     justify-content: end;
+  }
+
+  button {
+    display: block; /* Asegura que el botón esté siempre visible */
   }
 </style>
