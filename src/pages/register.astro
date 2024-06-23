@@ -11,20 +11,20 @@ import Header from '../components/Header.astro'
   />
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
   <script>
-  function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    const button = document.querySelector('button');
-  
-    if (passwordInput.getAttribute('type') === 'password') {
-      passwordInput.setAttribute('type', 'text');
-      button.textContent = 'Ocultar';
-    } else {
-      passwordInput.setAttribute('type', 'password');
-      button.textContent = 'Ver';
+    function togglePasswordVisibility() {
+      const passwordInput = document.getElementById('password')
+      const button = document.querySelector('button')
+
+      if (passwordInput.getAttribute('type') === 'password') {
+        passwordInput.setAttribute('type', 'text')
+        button.textContent = 'Ocultar'
+      } else {
+        passwordInput.setAttribute('type', 'password')
+        button.textContent = 'Ver'
+      }
+
+      console.log('Toggle function executed') // Agrega esta línea
     }
-  
-    console.log('Toggle function executed'); // Agrega esta línea
-  }
   </script>
   <Header
     texto1="Inicio de Sesión"
@@ -93,7 +93,6 @@ import Header from '../components/Header.astro'
       }, 2000)
     }
   })
-
 </script>
 
 <script src="./scripts/checkbox.js"></script>
@@ -184,6 +183,6 @@ import Header from '../components/Header.astro'
   }
 
   #password {
-    font-size: 16px; 
+    font-size: 16px;
   }
 </style>
