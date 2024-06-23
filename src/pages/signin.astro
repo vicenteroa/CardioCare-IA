@@ -90,14 +90,6 @@ if (Astro.cookies.has('session')) {
       showMessage('Error al iniciar sesión por favor verifica correo y contraseña ', 'ERROR')
     }
   })
-  function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    if (passwordInput.getAttribute('type') === 'password') {
-      passwordInput.setAttribute('type', 'text');
-    } else {
-      passwordInput.setAttribute('type', 'password');
-    }
-  }
 </script>
 <style>
   .cont-form {

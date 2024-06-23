@@ -10,6 +10,22 @@ import Header from '../components/Header.astro'
     href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
   />
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script>
+  function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const button = document.querySelector('button');
+  
+    if (passwordInput.getAttribute('type') === 'password') {
+      passwordInput.setAttribute('type', 'text');
+      button.textContent = 'Ocultar';
+    } else {
+      passwordInput.setAttribute('type', 'password');
+      button.textContent = 'Ver';
+    }
+  
+    console.log('Toggle function executed'); // Agrega esta línea
+  }
+  </script>
   <Header
     texto1="Inicio de Sesión"
     link1="register"
@@ -78,14 +94,6 @@ import Header from '../components/Header.astro'
     }
   })
 
-  function togglePasswordVisibility() {
-    const passwordInput = document.getElementById('password');
-    if (passwordInput.getAttribute('type') === 'password') {
-      passwordInput.setAttribute('type', 'text');
-    } else {
-      passwordInput.setAttribute('type', 'password');
-    }
-  }
 </script>
 
 <script src="./scripts/checkbox.js"></script>
@@ -171,7 +179,11 @@ import Header from '../components/Header.astro'
     justify-content: end;
   }
 
-  button {
-    display: block; /* Asegura que el botón esté siempre visible */
+  .show-password {
+    display: block;
+  }
+
+  #password {
+    font-size: 16px; 
   }
 </style>
