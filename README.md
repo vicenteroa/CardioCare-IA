@@ -1,4 +1,5 @@
-![CARDIOCARE-DEV](https://github.com/vicenteroa/CardioCare-IA/assets/79950811/055e09e6-e3a2-49c7-9f52-16e583721e9c)
+![DarkImage](https://github.com/vicenteroa/CardioCare-IA/assets/79950811/3ecf3c7f-3415-4ed3-af27-dc141a1d8e0c)
+
 
 # Descripción
 Esta es la rama de desarrollo (DEV) del proyecto. Aquí es donde se trabaja en nuevas características, correcciones de errores y otras mejoras antes de fusionarlas en la rama principal del proyecto.
@@ -62,3 +63,7 @@ Todos los comandos de la terminal que se pueden ejecutar en el entorno de astro:
     </td>
   </tr>
 </table>
+
+### 
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/large.svg)](https://astro.build)
+
